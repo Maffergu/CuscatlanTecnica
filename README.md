@@ -7,16 +7,16 @@ Servicio API REST desarrollado para gestionar cobros automáticos simulados. Per
 
 ## Stack Tecnológico
 
-*  **Lenguaje:** Node.js (Express) 
+**Lenguaje:** Node.js (Express) 
 
 
-*  **ORM:** Prisma 
+**ORM:** Prisma 
 
 
-*  **Base de Datos:** MySQL (Relacional) 
+**Base de Datos:** MySQL (Relacional) 
 
 
-*  **Pruebas:** Jest + Supertest 
+**Pruebas:** Jest + Supertest 
 
 
 
@@ -70,10 +70,10 @@ npm run dev
 
 Todos los endpoints requieren la siguiente cabecera para validación básica de seguridad mediante un token:
 
-* **Header:** `x-api-key` 
+**Header:** `x-api-key` 
 
 
-* **Valor:** `supersecreta` 
+**Valor:** `supersecreta` 
 
 
 
@@ -99,10 +99,10 @@ Todos los endpoints requieren la siguiente cabecera para validación básica de 
 * Aplica reglas de simulación:
 
 
-* **Monto ≤ 1000:** Estado cambia a `PROCESADO`.
+**Monto ≤ 1000:** Estado cambia a `PROCESADO`.
 
 
-* **Monto > 1000:** Estado cambia a `FALLIDO`.
+**Monto > 1000:** Estado cambia a `FALLIDO`.
 
 
 
@@ -140,13 +140,13 @@ npm test
 
 ## Decisiones Técnicas
 
-* **Persistencia:** Se utilizó MySQL para asegurar una estructura de datos relacional robusta según lo solicitado.
+**Persistencia:** Se utilizó MySQL para asegurar una estructura de datos relacional robusta según lo solicitado.
 
 
-* **Idempotencia:** Se implementó lógica de control basada en el estado `PENDIENTE` para asegurar que peticiones repetidas no generen duplicidad.
+**Idempotencia:** Se implementó lógica de control basada en el estado `PENDIENTE` para asegurar que peticiones repetidas no generen duplicidad.
 
 
-* **Trazabilidad:** Se diseñó una entidad de `Auditoría` que registra cada cambio crítico de estado para cumplir con el seguimiento de eventos.
+**Trazabilidad:** Se diseñó una entidad de `Auditoría` que registra cada cambio crítico de estado para cumplir con el seguimiento de eventos.
 
 
 
