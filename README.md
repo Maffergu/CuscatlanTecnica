@@ -7,20 +7,16 @@ Servicio API REST desarrollado para gestionar cobros automáticos simulados. Per
 
 ## Stack Tecnológico
 
-* 
-**Lenguaje:** Node.js (Express) 
+*  **Lenguaje:** Node.js (Express) 
 
 
-* 
-**ORM:** Prisma 
+*  **ORM:** Prisma 
 
 
-* 
-**Base de Datos:** MySQL (Relacional) 
+*  **Base de Datos:** MySQL (Relacional) 
 
 
-* 
-**Pruebas:** Jest + Supertest 
+*  **Pruebas:** Jest + Supertest 
 
 
 
@@ -30,11 +26,19 @@ Servicio API REST desarrollado para gestionar cobros automáticos simulados. Per
 * Servidor MySQL activo.
 * Base de datos relacional creada (ej. `mydb`).
 
+## Variables de entorno
+
+Crear archivo .env con:
+
+DATABASE_URL="file:./dev.db"
+API_KEY="supersecreta"
+
+
 ## Configuración e Instalación
 
 1. **Instalar dependencias:**
 ```bash
-[cite_start]npm install [cite: 68]
+npm install
 
 ```
 
@@ -49,14 +53,14 @@ DATABASE_URL="mysql://USUARIO:PASSWORD@localhost:3306/mydb"
 
 3. **Sincronizar base de datos y generar cliente Prisma:**
 ```bash
-[cite_start]npx prisma migrate dev --name init [cite: 68]
+npx prisma migrate dev --name init
 
 ```
 
 
 4. **Ejecutar el servidor en modo desarrollo:**
 ```bash
-[cite_start]npm run dev [cite: 68]
+npm run dev
 
 ```
 
@@ -66,12 +70,10 @@ DATABASE_URL="mysql://USUARIO:PASSWORD@localhost:3306/mydb"
 
 Todos los endpoints requieren la siguiente cabecera para validación básica de seguridad mediante un token:
 
-* 
-**Header:** `x-api-key` 
+* **Header:** `x-api-key` 
 
 
-* 
-**Valor:** `supersecreta` 
+* **Valor:** `supersecreta` 
 
 
 
@@ -100,8 +102,7 @@ Todos los endpoints requieren la siguiente cabecera para validación básica de 
 * **Monto ≤ 1000:** Estado cambia a `PROCESADO`.
 
 
-* 
-**Monto > 1000:** Estado cambia a `FALLIDO`.
+* **Monto > 1000:** Estado cambia a `FALLIDO`.
 
 
 
@@ -118,8 +119,7 @@ Todos los endpoints requieren la siguiente cabecera para validación básica de 
 * Devuelve un resumen con totales, procesados y fallidos.
 
 
-* 
-**Idempotencia:** El proceso garantiza que no se dupliquen acciones sobre registros ya procesados.
+* **Idempotencia:** El proceso garantiza que no se dupliquen acciones sobre registros ya procesados.
 
 
 
@@ -134,22 +134,19 @@ Todos los endpoints requieren la siguiente cabecera para validación básica de 
 Para ejecutar las pruebas automatizadas que validan la lógica de negocio y la creación de entidades:
 
 ```bash
-[cite_start]npm test [cite: 68]
+npm test
 
 ```
 
 ## Decisiones Técnicas
 
-* 
-**Persistencia:** Se utilizó MySQL para asegurar una estructura de datos relacional robusta según lo solicitado.
+* **Persistencia:** Se utilizó MySQL para asegurar una estructura de datos relacional robusta según lo solicitado.
 
 
-* 
-**Idempotencia:** Se implementó lógica de control basada en el estado `PENDIENTE` para asegurar que peticiones repetidas no generen duplicidad.
+* **Idempotencia:** Se implementó lógica de control basada en el estado `PENDIENTE` para asegurar que peticiones repetidas no generen duplicidad.
 
 
-* 
-**Trazabilidad:** Se diseñó una entidad de `Auditoría` que registra cada cambio crítico de estado para cumplir con el seguimiento de eventos.
+* **Trazabilidad:** Se diseñó una entidad de `Auditoría` que registra cada cambio crítico de estado para cumplir con el seguimiento de eventos.
 
 
 
